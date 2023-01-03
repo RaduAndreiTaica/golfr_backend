@@ -20,7 +20,8 @@ module Api
 
       return unless user
 
-      render json: {
+      render json:
+        {
           scores: user.scores
         }
     end
