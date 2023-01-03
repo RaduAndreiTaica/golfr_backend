@@ -5,7 +5,7 @@ module Api
     before_action :validate_score_user_id, only: :destroy
 
     def user_feed
-      scores = Score.all.limit(25).order(played_at: :desc, id: :desc).includes(:user)
+      scores = Score.all.order(played_at: :desc, id: :desc)
       serialized_scores = scores.map(&:serialize)
 
       response = {
@@ -21,8 +21,8 @@ module Api
       return unless user
 
       render json: {
-        scores: user.scores
-      }
+          scores: user.scores
+        }
     end
 
     def create
