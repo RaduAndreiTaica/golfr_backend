@@ -13,16 +13,7 @@ class ApplicationController < ActionController::API
   end
 
   def find_user(id)
-    user = User.find_by(id: id)
-
-    if user.blank?
-      render json: {
-        errors: "The user was not found"
-      }, status: :bad_request
-      return
-    end
-
-    return user
+    User.find_by(id: id)
   end
 
   def current_token

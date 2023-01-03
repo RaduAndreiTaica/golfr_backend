@@ -18,11 +18,11 @@ module Api
     def user_score
       user = find_user(params[:id])
 
-      if user
-        render json: {
-          scores: user.scores
-        }
-      end
+      return unless user
+
+      render json: {
+        scores: user.scores
+      }
     end
 
     def create
